@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рассчитайте стоимость Вашего потолка онлайн!</title>
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <main>
+        <h1>Рассчитайте стоимость Вашего потолка онлайн!</h1>
+        <div class="navigation">
+            <button class="navigation__btn navigation__btn--selected">Комната №1</button>
+            <button class="navigation__btn"><i class="fa-solid fa-plus"></i> Добавить комнату</button>
+        </div>
+        <div class="wrapper">
+            <div class="content">
+                <div class="content__group">
+                    <div class="content__item">
+                        <p class="content__item-label">Площадь помещения: </p>
+                        <div class="content__input">
+                            <div class="content__controls">
+                                <button class="content__btn content__btn--minus minus-button"><i class="fa-solid fa-minus"></i></button>
+                                <input id="area" class="content__inp" type="text" value="10" min="1" max="1000">
+                                <p class="content__tooltip">м²</p>
+                                <button class="content__btn content__btn--plus plus-button"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content__item">
+                        <p class="content__item-label">Количество углов: </p>
+                        <div class="content__input">
+                            <div class="content__controls">
+                                <button class="content__btn content__btn--minus"><i class="fa-solid fa-minus"></i></button>
+                                <input id="corners" class="content__inp" type="text" value="4" min="1" max="50">
+                                <p class="content__tooltip">м²</p>
+                                <button class="content__btn content__btn--plus"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__group">
+                    <div class="content__item">
+                        <p class="content__item-label">Фактура потолка: </p>
+                        <div class="content__select">
+                            <div class="content__controls">
+                                <select id="texture">
+                                    <option value="pvc">ПВХ</option>
+                                    <option value="fabric">Тканевый</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content__item">
+                        <p class="content__item-label">Цвет потолка: </p>
+                        <div class="content__select">
+                            <div class="content__controls">
+                                <select id="color">
+                                    <option value="white">Белый</option>
+                                    <option value="colorful">Цветной</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__price">
+                    <h4 class="content__price-title">Итого:</h4>
+                    <p class="content__price-sum" id="result"></p>
+                </div>
+                <div class="content__btns">
+                    <button class="content__button content__button--primary">ОФОРМИТЬ ЗАКАЗ</button>
+                    <button class="content__button content__button--secondary">СКАЧАТЬ СМЕТУ</button>
+                </div>
+            </div>
+            <img src="./img/hero.jpg" alt="hero image">
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

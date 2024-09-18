@@ -25,12 +25,34 @@ body {
   font-weight: normal;
   src: local("Futura PT Medium"), url("../fonts/FuturaCyrillicMedium.woff") format("woff");
 }
+@font-face {
+  font-family: "Futura PT Book";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Futura PT Medium"), url("../fonts/FuturaPT-Book.woff") format("woff");
+}
+@font-face {
+  font-family: "Futura PT Demi";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Futura PT Medium"), url("../fonts/FuturaPT-Demi.woff") format("woff");
+}
+@font-face {
+  font-family: "Futura PT Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Futura PT Medium"), url("../fonts/FuturaPT-Light.woff") format("woff");
+}
 :root {
   --primary: #bf3266;
   --secondary: rgba(183, 186, 203, 0.20);
   --secondary-dark: rgba(183, 186, 203, 0.40);
   --black: #000000;
   --white: #ffffff;
+  --ff-book: "Futura PT Book";
+  --ff-light: "Futura PT Light";
+  --ff-demi: "Futura PT Demi";
+  --ff-medium: "Futura PT Medium";
 }
 
 body {
@@ -265,6 +287,225 @@ h1 {
   color: var(--primary);
 }
 
+.modal {
+  overflow: auto;
+  display: block;
+  position: fixed;
+  top: 8vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1115;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  background: #fff;
+  -webkit-box-shadow: 0 4px 54.95px rgba(133, 133, 133, 0.25);
+          box-shadow: 0 4px 54.95px rgba(133, 133, 133, 0.25);
+  width: 100%;
+  max-width: 670px;
+  padding: 80px 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal input {
+  font-family: "Futura PT Medium";
+}
+.modal__title {
+  font-family: "Futura PT Demi";
+  font-size: 36px;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+.modal__desc {
+  font-family: var(--ff-book);
+  font-size: 18px;
+  line-height: 140%;
+  margin-bottom: 30px;
+}
+.modal__input {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  line-height: 140%;
+  margin-bottom: 30px;
+  font-family: "Futura PT Book";
+  background: transparent;
+  outline: 0;
+}
+.modal__policy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  font-family: var(--ff-book);
+  font-size: 16px;
+  color: white;
+  margin-top: 15px;
+  position: relative;
+  z-index: 5;
+}
+.modal__policy input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.modal__policy label {
+  display: inline-block;
+  position: relative;
+  padding-left: 28px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.modal__policy label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.modal__policy label::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 5px;
+  border-left: 4px solid var(--primary);
+  border-bottom: 4px solid var(--primary);
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  opacity: 0;
+}
+.modal__policy input[type=checkbox]:checked + label::after {
+  opacity: 1;
+}
+.modal__policy p {
+  font-size: 15px;
+  line-height: 120%;
+  color: black;
+  font-weight: 300;
+}
+.modal__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60px;
+  width: 100%;
+  border: 0;
+  background: var(--primary);
+  border-radius: 5px;
+  font-family: var(--ff-demi);
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+.modal__close {
+  position: absolute;
+  top: 92px;
+  right: 40px;
+  cursor: pointer;
+  stroke: #000;
+}
+.modal__open {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  z-index: 1110;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.modal__open.active {
+  opacity: 0.5;
+  visibility: visible;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+
+.modal-invoce {
+  opacity: 0;
+  visibility: hidden;
+}
+.modal-invoce.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-calc {
+  opacity: 0;
+  visibility: hidden;
+}
+.modal-calc.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-calc__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 15px;
+     -moz-column-gap: 15px;
+          column-gap: 15px;
+}
+.modal-calc__left {
+  min-width: 190px;
+}
+.modal-calc .additionally {
+  font-family: var(--ff-book);
+  color: var(--black);
+  font-size: 14px;
+  max-width: 188px;
+}
+.modal-calc .total {
+  font-family: var(--ff-demi);
+  margin: 20px 0 10px 0;
+  font-size: 18px;
+  line-height: 140%;
+}
+.modal-calc .total span {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ========== MEDIA ========== */
 @media (max-width: 1440px) {
   .wrapper img {
     width: 400px;
@@ -344,5 +585,27 @@ h1 {
   .content__button {
     padding: 15px 25px;
     font-size: 12px !important;
+  }
+}
+@media (max-width: 680px) {
+  .modal-calc__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .modal-calc .additionally {
+    max-width: none;
+  }
+}
+@media (max-width: 500px) {
+  .modal {
+    min-height: 100vh;
+    top: 0;
+    padding: 45px 20px;
+  }
+  .modal__close {
+    top: 52px;
+    right: 20px;
   }
 }

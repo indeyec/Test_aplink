@@ -24,6 +24,24 @@ body {
     font-weight: normal;
     src: local('Futura PT Medium'), url('../fonts/FuturaCyrillicMedium.woff') format('woff');
 }
+@font-face {
+    font-family: 'Futura PT Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura PT Medium'), url('../fonts/FuturaPT-Book.woff') format('woff');
+}
+@font-face {
+    font-family: 'Futura PT Demi';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura PT Medium'), url('../fonts/FuturaPT-Demi.woff') format('woff');
+}
+@font-face {
+    font-family: 'Futura PT Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura PT Medium'), url('../fonts/FuturaPT-Light.woff') format('woff');
+}
 
 :root {
     --primary: #bf3266;
@@ -31,6 +49,11 @@ body {
     --secondary-dark: rgba(183, 186, 203, 0.40);
     --black: #000000;
     --white: #ffffff;
+
+    --ff-book: 'Futura PT Book';
+    --ff-light: 'Futura PT Light';
+    --ff-demi: 'Futura PT Demi';
+    --ff-medium: 'Futura PT Medium';
 }
 
 body {
@@ -232,6 +255,204 @@ h1 {
         }
     }
 }
+
+.modal {
+    overflow: auto;
+    display: block;
+    position: fixed;
+    top: 8vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1115;
+    transition: all linear .2s;
+    background: #fff;
+    box-shadow: 0 4px 54.95px rgba(133, 133, 133, .25);
+    width: 100%;
+    max-width: 670px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    height: fit-content;
+    margin: 0 auto;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    input {
+        font-family: 'Futura PT Medium';
+    }
+    &__title {
+        font-family: 'Futura PT Demi';
+        font-size: 36px;
+        line-height: 1.4;
+        margin-bottom: 40px;
+    }
+    &__desc {
+        font-family: var(--ff-book);
+        font-size: 18px;
+        line-height: 140%;
+        margin-bottom: 30px;
+    }
+
+    &__input {
+        height: 50px;
+        width: 100%;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        line-height: 140%;
+        margin-bottom: 30px;
+        font-family: "Futura PT Book";
+        background: transparent;
+        outline: 0;
+    }
+
+    &__policy {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        font-family: var(--ff-book);
+        font-size: 16px;
+        color: white;
+        margin-top: 15px;
+        position: relative;
+        z-index: 5;
+        input {
+            opacity: 0;  // Прячем стандартный чекбокс
+            position: absolute;
+            z-index: -1;
+        }
+    
+        label {
+            display: inline-block;
+            position: relative;
+            padding-left: 28px;
+            line-height: 20px;
+            cursor: pointer;
+    
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ddd;
+                background-color: #fff;
+                border-radius: 4px;
+            }
+    
+            &::after {
+                content: "";
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                width: 10px;
+                height: 5px;
+                border-left: 4px solid var(--primary);
+                border-bottom: 4px solid var(--primary);
+                transform: rotate(-45deg);
+                opacity: 0;  // Прячем галочку по умолчанию
+            }
+        }
+    
+        input[type="checkbox"]:checked + label::after {
+            opacity: 1;  // Показываем галочку при выборе чекбокса
+        }
+        
+        p {
+            font-size: 15px;
+            line-height: 120%;
+            color: black;
+            font-weight: 300;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        width: 100%;
+        border: 0;
+        background: var(--primary);
+        border-radius: 5px;
+        font-family: var(--ff-demi);
+        font-size: 18px;
+        line-height: 1.4;
+        text-align: center;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #fff;
+        cursor: pointer;
+    }
+    &__close {
+        position: absolute;
+        top: 92px;
+        right: 40px;
+        cursor: pointer;
+        stroke: #000;
+    }
+    &__open {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: #000;
+        z-index: 1110;
+        transition: all linear .2s;
+        &.active {
+            opacity: .5;
+            visibility: visible;
+            transition: all linear .2s;
+        }
+    }
+}
+.modal-invoce {
+    opacity: 0;
+    visibility: hidden;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.modal-calc {
+    opacity: 0;
+    visibility: hidden;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    &__content {
+        display: flex;
+        column-gap: 15px;
+    }
+    &__left {
+        min-width: 190px;
+    }
+    & .additionally {
+        font-family: var(--ff-book);
+        color: var(--black);
+        font-size: 14px;
+        max-width: 188px;
+    }
+    & .total {
+        font-family: var(--ff-demi);
+        margin: 20px 0 10px 0;
+        font-size: 18px;
+        line-height: 140%;
+        & span {
+            font-weight: 600;
+            color: var(--primary);
+        }
+    }
+}
+
+
+/* ========== MEDIA ========== */
 @media (max-width: 1440px) {
     .wrapper img {
         width: 400px;
@@ -313,4 +534,27 @@ h1 {
         }
     }
 
+}
+
+@media (max-width: 680px) {
+    .modal-calc {
+        &__content {
+            flex-direction: column;
+        }
+        & .additionally {
+            max-width: none;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .modal {
+        min-height: 100vh;
+        top: 0;
+        padding: 45px 20px;
+        &__close {
+            top: 52px;
+            right: 20px;
+        }
+    }
 }

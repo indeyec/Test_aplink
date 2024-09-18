@@ -18,11 +18,6 @@ function calculateCost() {
     let color = $('#color').val();
     let texture = $('#texture').val();
 
-    console.log("Area:", area);
-    console.log("Corners:", corners);
-    console.log("Color:", color);
-    console.log("Texture:", texture);
-
     // Проверка на опцию "Тканевый"
     if (texture === 'fabric'&& color ==='colorful') {
         $('#result').text("Нет в наличии");
@@ -31,11 +26,9 @@ function calculateCost() {
         let price_per_sqm = data.prices[texture][color];
         let corner_price = data.prices["corner_price"];
         let price = price_per_sqm * area + corner_price * corners;
-        console.log("Price:", price);
         $('#result').text("Стоимость натяжного потолка: " + price + " руб");
         $('#result-calc').html("Итого: <span>" + price + "</span> руб");
     } else {
-        console.log("Invalid input for area or corners.");
         $('#result').text("");
     }
 }

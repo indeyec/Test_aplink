@@ -1,3 +1,5 @@
+
+
 let data = {
   "prices": {
       "pvc": {
@@ -24,7 +26,7 @@ function calculateCost() {
   console.log("Texture:", texture);
 
   // Проверка на опцию "Тканевый"
-  if (texture === 'fabric') {
+  if (texture === 'fabric'&& color ==='colorful') {
       $('#result').text("Нет в наличии");
   } else if (!isNaN(area) && !isNaN(corners) && area >= 10 && corners >= 0) {
       let price_per_sqm = data.prices[texture][color];
@@ -68,3 +70,5 @@ $(document).ready(function() {
       });
   });
 });
+
+

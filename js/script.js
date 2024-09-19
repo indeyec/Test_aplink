@@ -25,7 +25,7 @@ function calculateTotalCost() {
     let roomsHtml = '';
 
     rooms.forEach(({ area, corners, texture, color, id }) => {
-        if (texture === 'fabric') return;
+        
 
         let pricePerSqm = data.prices[texture][color];
         let roomPrice = pricePerSqm * area + data.prices.corner_price * corners;
@@ -52,11 +52,10 @@ function calculateTotalCost() {
     $('#result').text(`Стоимость натяжного потолка: ${totalPrice.toLocaleString()} руб`);
 
     const currentRoomObj = rooms.find(room => room.id === currentRoom);
-    if (currentRoomObj?.texture === 'fabric') {
+    if (currentRoomObj?.texture === 'fabric'&& currentRoomObj?.color === 'colorful') {
         $('#result').text('Нет в наличии');
     }
 }
-
 
 // Функция обновления данных комнаты
 function updateRoom(roomId, field, value) {
@@ -183,19 +182,16 @@ $(document).ready(function() {
 
     selectRoom(1);
 });
-
 // Функция открытия модального окна
 function openModal(modalClass) {
     $(`.${modalClass}`).addClass('active');
     $('.modal__open').addClass('active');
 }
-
 // Функция закрытия модальных окон
 function closeModal() {
     $('.modal.active').removeClass('active');
     $('.modal__open').removeClass('active');
 }
-
 // Маска для телефона
 $(document).ready(function () {
     $('input[name="phone"]').inputmask({

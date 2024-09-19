@@ -126,7 +126,13 @@ h1 {
   font-size: 18px;
   border: none;
   outline: none;
+  position: relative;
 }
+
+.navigation__btn:not(:first-child) {
+  padding: 0 40px 0 20px;
+}
+
 .navigation__btn--selected {
   background: var(--white);
   -webkit-box-shadow: 0px 4px 54.85px 0px rgba(133, 133, 133, 0.25);
@@ -312,6 +318,18 @@ h1 {
   margin: 0 auto;
   -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-calc .room {
+  margin-bottom: 20px;
+}
+.modal .props span {
+  color: #BF3266;
+  font-family: "Futura PT Demi";
+}
+.modal .props {
+  font-size: 18px;
+  line-height: 140%;
+  font-family: "Futura PT Book";
 }
 .modal input {
   font-family: "Futura PT Medium";
@@ -503,6 +521,20 @@ h1 {
 .modal-calc .total span {
   font-weight: 600;
   color: var(--primary);
+}
+.remove-room {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background: #BF3266;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  color: #ffffff;
 }
 
 /* ========== MEDIA ========== */
